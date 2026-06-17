@@ -184,6 +184,13 @@ The agent should not find a listing, should store an error message, and should s
 The agent returned a helpful message explaining that no listings matched and suggested changing the search. This confirmed that the planning loop branches correctly instead of always calling all three tools.
 
 ---
+## Spec Reflection
+
+The spec helped me by forcing me to define each tool before coding. Writing down the inputs, outputs, purpose, and failure cases made it easier to build the tools in a clear order instead of guessing while coding.
+
+One way my implementation diverged from the spec was that the agent currently chooses the first matching listing as the selected item instead of using a more advanced ranking system. I made this choice because the mock dataset is small, so choosing the first filtered match was simple and reliable for this version. In a future version, I would improve this by ranking listings based on price, style tags, color match, and how closely the description matches the user query.
+
+---
 
 ## AI Usage
 
@@ -210,3 +217,4 @@ For the failure case, I search for something unrealistic, such as a designer bal
 This project helped me understand how agents use tools, planning loops, and state. The most important part was making sure the agent does not just call every tool every time. The agent has to make a decision after `search_listings`: if no results are found, it stops; if results are found, it continues.
 
 The project also showed why error handling matters. Testing failure cases made the agent stronger because I confirmed that it responds gracefully instead of crashing or producing fake output.
+---
